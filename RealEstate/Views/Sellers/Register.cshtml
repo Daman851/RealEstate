@@ -1,0 +1,62 @@
+﻿@model RealEstate.Models.SellersModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-box">
+        <h1>Seller Registration Form</h1>
+        @if(ViewBag.isSuccess != null)
+    {
+
+            if (ViewBag.isSuccess)
+            {
+
+                <div class="alert alert-@ViewBag.status" role="alert">
+                    @ViewBag.msg
+                </div>
+
+            }
+    }
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, null, new { @class = "form-control" })
+            <div class="help-block text-red">
+                 @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, null, new { @class = "form-control" })
+            <div class="help-block text-red">
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, null, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.Email)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address)
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.Address)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Phone)
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+           <div class="help-block text-red"> @Html.ValidationMessageFor(m => m.Phone)</div>
+        </div>
+
+        <p>
+            <input type="submit" class="btn-block btn-primary" value="Register" />
+        </p>
+    </div>
+
+}

@@ -1,0 +1,79 @@
+﻿@model RealEstate.Models.PropertyModel
+@{
+    ViewBag.Title = "AddProperty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+
+    <div class="form-box">
+        <h1>Add Property Form</h1>
+        @if (ViewBag.isSuccess != null)
+        {
+
+            if (ViewBag.isSuccess)
+            {
+
+                <div class="alert alert-@ViewBag.status" role="alert">
+                    @ViewBag.msg
+                </div>
+
+            }
+        }
+        <div class="form-group">
+            @Html.LabelFor(m => m.Suburb)
+            @Html.TextBoxFor(m => m.Suburb, null, new { @class = "form-control" })
+            <div class="help-block text-red">
+                @Html.ValidationMessageFor(m => m.Suburb)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Location)
+            @Html.TextBoxFor(m => m.Location, null, new { @class = "form-control" })
+            <div class="help-block text-red">
+                @Html.ValidationMessageFor(m => m.Location)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.NumberOfRooms)
+            @Html.TextBoxFor(m => m.NumberOfRooms, null, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.NumberOfRooms)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PropertyType)
+            @Html.TextBoxFor(m => m.PropertyType, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.PropertyType)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.FloorArea)
+            @Html.TextBoxFor(m => m.FloorArea, new { @class = "form-control" })
+            <div class="help-block text-red"> @Html.ValidationMessageFor(m => m.FloorArea)</div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LandArea)
+            @Html.TextBoxFor(m => m.LandArea, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.LandArea)</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.RV)
+            @Html.TextBoxFor(m => m.RV, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.RV)</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.SellerEmail)
+            @Html.TextBoxFor(m => m.SellerEmail, new { @class = "form-control" })
+            <div class="help-block text-red">@Html.ValidationMessageFor(m => m.SellerEmail)</div>
+        </div>
+
+        <p>
+            <input type="submit" class="btn-block btn-primary" value="Add Property" />
+        </p>
+    </div>
+
+}

@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron align-middle">
+        <div class="vertical-center">
+            <h1>Welcome To Real Homes</h1>
+            <p class="lead">We ensure you find your dream home, by connecting with top rated sellers measured on their performance.</p>
+            <p>
+
+                @Html.ActionLink("See Properties >>", "Properties", "Property", new { area = "" }, new { @class = "btn btn-primary btn-lg" })
+            </p>
+        </div>
+    </div>

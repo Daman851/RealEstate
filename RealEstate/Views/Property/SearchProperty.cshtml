@@ -1,0 +1,61 @@
+﻿@model IEnumerable<RealEstate.Models.PropertyModel>
+@{
+    ViewBag.Title = "SearchProperty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("SearchProperty", "Property"))
+{
+    <div class="form-box container">
+        <h1>Search Property</h1>
+
+        <p class="search-heading"> Search Option: </p>
+        <label class="radio">
+            @Html.RadioButton("option", "Suburb", true) <text>Suburb</text>
+        </label>
+        <label class="radio">
+            @Html.RadioButton("option", "Location") <text> Location </text>
+        </label>
+        <label class="radio">
+            @Html.RadioButton("option", "Property Type")<text>Property Type</text>
+        </label>
+        <input id="search" name="search" type="text" class="form-control" value="">
+        <br>
+        <input type="submit" class="btn-block btn-primary" name="submit" value="Search" />
+</div>
+}
+<div class="container mt-3">
+    @if (Model != null)
+    {
+        <h1 class="properties text-center">Available Properties</h1>
+        <hr>
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-uppercase display-3">Property Location: @item.Location</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>SubUrb:<strong>@item.Suburb</strong></h4>
+                            <h4>Number Of Rooms:<strong>@item.NumberOfRooms</strong></h4>
+                            <h4>Property Type:<strong class="text-capitalize">@item.PropertyType</strong></h4>
+                            <h4>Floor Area:<strong>@item.FloorArea yd²</strong></h4>
+                            <hr>
+                            <a href="PropertyById/@item.PropertyID" class="btn btn-primary btn">View Property</a>
+                            @if (Session["Email"] != null)
+                            {
+                                if (@item.SellerEmail == Session["Email"].ToString())
+                                {
+                                    <a href="DeleteProperty/@item.PropertyID" class="btn btn-danger btn">Delete Property</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
